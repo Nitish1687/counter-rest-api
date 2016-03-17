@@ -1,0 +1,41 @@
+<!DOCTYPE import-control PUBLIC
+        "-//Puppy Crawl//DTD Import Control 1.0//EN"
+        "http://www.puppycrawl.com/dtds/import_control_1_0.dtd">
+
+<import-control pkg="com.nitish.counter">
+    <!-- allow access to utility libraries -->
+    <allow pkg="java"/>
+    <allow pkg="javax"/>
+    <allow pkg="org"/>
+    <allow pkg="com"/>
+    <allow pkg="io"/>
+    <allow pkg="springfox"/>
+
+    <subpackage name="controller">
+        <allow pkg="com.nitish.counter.service"/>
+        <allow pkg="com.csvreader.CsvWriter"/>
+        <allow pkg="com.nitish.counter.beans"/>
+        <allow pkg="com.nitish.counter.configuration"/>
+    </subpackage>
+
+    <subpackage name="service">
+        <allow pkg="com.nitish.counter.dto"/>
+        <allow pkg="com.nitish.counter.beans"/>
+        <allow pkg="com.nitish.counter.exception"/>
+    </subpackage>
+
+    <subpackage name="builder">
+        <allow pkg="com.nitish.counter.beans"/>
+        <!--<allow pkg="com.nitish.counter.dto"/>-->
+    </subpackage>
+
+    <subpackage name="beans">
+        <allow pkg="com.nitish.counter.exception"/>
+    </subpackage>
+
+    <subpackage name="exception">
+        <allow pkg="com.nitish.counter.builder"/>
+        <allow pkg="com.nitish.counter.beans"/>
+    </subpackage>
+
+</import-control>
