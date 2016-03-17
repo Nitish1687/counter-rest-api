@@ -10,9 +10,6 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-/**
- * Created by amm0924 on 3/10/2016.
- */
 
 @Configuration
 @EnableSwagger2
@@ -28,7 +25,8 @@ public class SwaggerConfig {
                 .apiInfo(new ApiInfo(TITLE, DESCRIPTION,VERSION, "", new Contact("","",""), "", ""))
                 .select()
                 .apis(RequestHandlerSelectors.any())
-                .paths(PathSelectors.regex("/counter-api/*"))
+                .paths(PathSelectors.regex("/counter-api/search"))
+                .paths(PathSelectors.regex("/counter-api/top/*"))
                 .build();
     }
 }

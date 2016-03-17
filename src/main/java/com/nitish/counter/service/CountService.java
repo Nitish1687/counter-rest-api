@@ -32,7 +32,7 @@ public class CountService {
         Map<String, Long> wordExtractedFromFile = extractor.extract(getPath());
         List<String> keyFromSortedExtractedMap = wordExtractedFromFile.entrySet().stream().
                 sorted(sortByValueInReverseOrder()).map(Map.Entry::getKey).limit(count).collect(toList());
-       return keyFromSortedExtractedMap.stream().map(createCountDtoCollectionForGivenInputCount(wordExtractedFromFile)).collect(toList());
+        return keyFromSortedExtractedMap.stream().map(createCountDtoCollectionForGivenInputCount(wordExtractedFromFile)).collect(toList());
     }
 
 
@@ -49,11 +49,14 @@ public class CountService {
         List<String> keyFromSortedExtractedMap = wordExtractedFromFile.entrySet().stream().
                 sorted(sortByValueInReverseOrder()).map(Map.Entry::getKey).limit(count).collect(toList());
 
-       return  keyFromSortedExtractedMap.stream().map(createCountDtoCollectionForGivenInputCount(wordExtractedFromFile)).collect(toList());
+        return keyFromSortedExtractedMap.stream().map(createCountDtoCollectionForGivenInputCount(wordExtractedFromFile)).collect(toList());
     }
 
     private Function<String, CountDto> createCountDtoCollectionForSearchText(Map<String, Long> wordExtractedFromFile) {
-        return text -> CountDto.builder().withText(text).withFrequency(wordExtractedFromFile.get(text.toUpperCase())).build();
+        return text -> {
+            Long count = null == wordExtractedFromFile.get(text.toUpperCase()) ? 0L : wordExtractedFromFile.get(text.toUpperCase());
+            return CountDto.builder().withText(text).withFrequency(count).build();
+        };
     }
 
     private Function<String, CountDto> createCountDtoCollectionForGivenInputCount(Map<String, Long> wordExtractedFromFile) {
