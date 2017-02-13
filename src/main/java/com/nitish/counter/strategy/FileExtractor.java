@@ -33,10 +33,10 @@ public class FileExtractor implements Extractor {
     }
 
     private List<Optional<WordDocument>> extractWordDocumentFromFile(Path pathOfInputFile) throws InvalidWordDocumentRead {
-        List<Optional<WordDocument>> collect = null;
+        List<Optional<WordDocument>> collect;
         try {
             collect = Files.list(pathOfInputFile).map(path -> {
-                        WordDocument wordDocument = null;
+                        WordDocument wordDocument;
                         try {
                             wordDocument = getWordDocument(path.getFileName().toString(), getCapitalizeWord(path));
                         } catch (IOException e) {

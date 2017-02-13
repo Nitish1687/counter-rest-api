@@ -20,7 +20,7 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        http.authorizeRequests().antMatchers(POST,"/counter-api/**").hasRole("ADMIN")  //access("hasRole('ROLE_ADMIN')")
+        http.authorizeRequests().antMatchers(POST,"/counter-api/search").hasRole("ADMIN")  //access("hasRole('ROLE_ADMIN')")
                 .antMatchers("/*").permitAll()
                 .and()
                 .httpBasic()

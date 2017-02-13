@@ -36,7 +36,7 @@ public class CounterController {
         return new ResponseEntity<>(countService.countOccuranceFor(searchTexts), OK);
     }
 
-    @RequestMapping(value = "/counter-api/top/{count}", method = GET, consumes = "application/json", produces = "text/csv")
+    @RequestMapping(value = "/counter-api/top/{count}", method = GET, produces = "text/csv")
     public void topText(@PathVariable int count, HttpServletResponse response) throws IOException {
         Collection<CountDto> higherOccuranceText = countService.getHigherCountTextUpTo(count);
         response.setHeader("Content-Disposition", "attachment; filename=topText.csv");
